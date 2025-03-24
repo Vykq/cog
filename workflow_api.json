@@ -1,0 +1,528 @@
+{
+    "3": {
+      "inputs": {
+        "seed": 0,
+        "steps": 30,
+        "cfg": 3,
+        "sampler_name": "dpmpp_2m_sde",
+        "scheduler": "karras",
+        "denoise": 1,
+        "model": [
+          "18",
+          0
+        ],
+        "positive": [
+          "19",
+          0
+        ],
+        "negative": [
+          "19",
+          1
+        ],
+        "latent_image": [
+          "23",
+          0
+        ]
+      },
+      "class_type": "KSampler",
+      "_meta": {
+        "title": "KSampler"
+      }
+    },
+    "4": {
+      "inputs": {
+        "ckpt_name": "epicrealism_naturalSinRC1VAE.safetensors"
+      },
+      "class_type": "CheckpointLoaderSimple",
+      "_meta": {
+        "title": "Load Checkpoint"
+      }
+    },
+    "6": {
+      "inputs": {
+        "text": "commercial photo,  light green and white， greenery background， depth of field ，high level feeling ，perfect lighting， OC renderer， Blender ， super sharp ，super noise reduction",
+        "clip": [
+          "4",
+          1
+        ]
+      },
+      "class_type": "CLIPTextEncode",
+      "_meta": {
+        "title": "CLIP Text Encode (Prompt)"
+      }
+    },
+    "7": {
+      "inputs": {
+        "text": "(noise, blur, worst quality, low quality, error, cropped, bad anatomy, bad proportions, wrong hands)\n(NSFW, nude)",
+        "clip": [
+          "4",
+          1
+        ]
+      },
+      "class_type": "CLIPTextEncode",
+      "_meta": {
+        "title": "CLIP Text Encode (Prompt)"
+      }
+    },
+    "8": {
+      "inputs": {
+        "samples": [
+          "3",
+          0
+        ],
+        "vae": [
+          "4",
+          2
+        ]
+      },
+      "class_type": "VAEDecode",
+      "_meta": {
+        "title": "VAE Decode"
+      }
+    },
+    "11": {
+      "inputs": {
+        "image": [
+          "33",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "14": {
+      "inputs": {
+        "images": [
+          "140",
+          0
+        ]
+      },
+      "class_type": "PreviewImage",
+      "_meta": {
+        "title": "Preview Image"
+      }
+    },
+    "15": {
+      "inputs": {
+        "image": [
+          "140",
+          0
+        ]
+      },
+      "class_type": "SplitImageWithAlpha",
+      "_meta": {
+        "title": "Split Image with Alpha"
+      }
+    },
+    "16": {
+      "inputs": {
+        "x": 0,
+        "y": 0,
+        "resize_source": false,
+        "destination": [
+          "11",
+          0
+        ],
+        "source": [
+          "15",
+          0
+        ],
+        "mask": [
+          "140",
+          1
+        ]
+      },
+      "class_type": "ImageCompositeMasked",
+      "_meta": {
+        "title": "ImageCompositeMasked"
+      }
+    },
+    "17": {
+      "inputs": {
+        "image": [
+          "140",
+          0
+        ],
+        "alpha": [
+          "140",
+          1
+        ]
+      },
+      "_meta": {}
+    },
+    "18": {
+      "inputs": {
+        "model": [
+          "29",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "19": {
+      "inputs": {
+        "positive": [
+          "6",
+          0
+        ],
+        "negative": [
+          "7",
+          0
+        ],
+        "vae": [
+          "4",
+          2
+        ],
+        "foreground": [
+          "20",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "20": {
+      "inputs": {
+        "pixels": [
+          "17",
+          0
+        ],
+        "vae": [
+          "4",
+          2
+        ]
+      },
+      "class_type": "VAEEncode",
+      "_meta": {
+        "title": "VAE Encode"
+      }
+    },
+    "23": {
+      "inputs": {
+        "pixels": [
+          "16",
+          0
+        ],
+        "vae": [
+          "4",
+          2
+        ]
+      },
+      "class_type": "VAEEncode",
+      "_meta": {
+        "title": "VAE Encode"
+      }
+    },
+    "28": {
+      "inputs": {
+        "model": [
+          "4",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "29": {
+      "inputs": {
+        "model": [
+          "28",
+          0
+        ],
+        "ipadapter": [
+          "28",
+          1
+        ],
+        "image": [
+          "16",
+          0
+        ],
+        "attn_mask": [
+          "140",
+          1
+        ]
+      },
+      "_meta": {}
+    },
+    "33": {
+      "inputs": {
+        "image": "https://s3.prod.nordy.ai/media/raw/65b09de2-1674-4165-ad77-23f82874f145.png"
+      },
+      "class_type": "LoadImage",
+      "_meta": {
+        "title": "Load Image"
+      }
+    },
+    "57": {
+      "inputs": {
+        "images": [
+          "17",
+          0
+        ]
+      },
+      "class_type": "PreviewImage",
+      "_meta": {
+        "title": "Preview Image"
+      }
+    },
+    "109": {
+      "inputs": {
+        "image": [
+          "11",
+          0
+        ]
+      },
+      "class_type": "SplitImageWithAlpha",
+      "_meta": {
+        "title": "Split Image with Alpha"
+      }
+    },
+    "110": {
+      "inputs": {
+        "image": [
+          "109",
+          0
+        ]
+      },
+      "class_type": "ImageInvert",
+      "_meta": {
+        "title": "Invert Image"
+      }
+    },
+    "111": {
+      "inputs": {
+        "images": [
+          "109",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "112": {
+      "inputs": {
+        "image_a": [
+          "110",
+          0
+        ],
+        "image_b": [
+          "111",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "113": {
+      "inputs": {
+        "image": [
+          "112",
+          0
+        ]
+      },
+      "class_type": "ImageInvert",
+      "_meta": {
+        "title": "Invert Image"
+      }
+    },
+    "114": {
+      "inputs": {
+        "image_a": [
+          "111",
+          0
+        ],
+        "image_b": [
+          "113",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "117": {
+      "inputs": {
+        "image": [
+          "8",
+          0
+        ]
+      },
+      "class_type": "SplitImageWithAlpha",
+      "_meta": {
+        "title": "Split Image with Alpha"
+      }
+    },
+    "118": {
+      "inputs": {
+        "image": [
+          "117",
+          0
+        ]
+      },
+      "class_type": "ImageInvert",
+      "_meta": {
+        "title": "Invert Image"
+      }
+    },
+    "119": {
+      "inputs": {
+        "images": [
+          "117",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "120": {
+      "inputs": {
+        "image_a": [
+          "118",
+          0
+        ],
+        "image_b": [
+          "119",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "121": {
+      "inputs": {
+        "image": [
+          "120",
+          0
+        ]
+      },
+      "class_type": "ImageInvert",
+      "_meta": {
+        "title": "Invert Image"
+      }
+    },
+    "122": {
+      "inputs": {
+        "image_a": [
+          "119",
+          0
+        ],
+        "image_b": [
+          "121",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "123": {
+      "inputs": {
+        "image_a": [
+          "122",
+          0
+        ],
+        "image_b": [
+          "114",
+          0
+        ],
+        "mask": [
+          "136",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "124": {
+      "inputs": {
+        "image_a": [
+          "119",
+          0
+        ],
+        "image_b": [
+          "123",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "125": {
+      "inputs": {
+        "image": [
+          "124",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "126": {
+      "inputs": {
+        "filename_prefix": "ComfyUI",
+        "images": [
+          "125",
+          0
+        ]
+      },
+      "class_type": "SaveImage",
+      "_meta": {
+        "title": "Save Image"
+      }
+    },
+    "128": {
+      "inputs": {
+        "image_a": [
+          "125",
+          0
+        ],
+        "image_b": [
+          "11",
+          0
+        ]
+      },
+      "_meta": {}
+    },
+    "129": {
+      "inputs": {
+        "images": [
+          "8",
+          0
+        ]
+      },
+      "class_type": "PreviewImage",
+      "_meta": {
+        "title": "Preview Image"
+      }
+    },
+    "135": {
+      "inputs": {
+        "expand": -5,
+        "tapered_corners": true,
+        "mask": [
+          "140",
+          1
+        ]
+      },
+      "class_type": "GrowMask",
+      "_meta": {
+        "title": "GrowMask"
+      }
+    },
+    "136": {
+      "inputs": {
+        "mask": [
+          "135",
+          0
+        ]
+      },
+      "class_type": "MaskToImage",
+      "_meta": {
+        "title": "Convert Mask to Image"
+      }
+    },
+    "140": {
+      "inputs": {
+        "rem_mode": "RMBG-1.4",
+        "image_output": "Preview",
+        "save_prefix": "ComfyUI",
+        "torchscript_jit": false,
+        "add_background": "none",
+        "refine_foreground": false,
+        "images": [
+          "11",
+          0
+        ]
+      },
+      "class_type": "easy imageRemBg",
+      "_meta": {
+        "title": "Image Remove Bg"
+      }
+    }
+  }
